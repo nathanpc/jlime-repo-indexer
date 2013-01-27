@@ -1,8 +1,6 @@
 // main.js
 // Do *ALL* the things!!!!
 
-// TODO: Put the package title into a header (in the body) with the version (RubyGems style)
-// TODO: Color the Priority
 // TODO: Fix the maintainer field display (<> from email is getting parsed)
 
 function show_details(pack) {
