@@ -9,10 +9,10 @@ class Indexer {
 	public function __construct($repository, $category) {
 		$this->repository = $repository;
 		$this->category = $category;
-		$this->repo_url = build_repo_url($repo, $cat);
+		$this->repo_url = $this->build_repo_url($repository, $category);
 	}
 
-	private static function build_repo_url($repository, $category) {
+	public static function build_repo_url($repository, $category) {
 		$repo_base_url = "http://www.jlime.com/downloads/repository";
 		// TODO: Implement feed-lagacy too.
 		return "$repo_base_url/$repository/feed/$category/Packages";
@@ -43,7 +43,7 @@ class Indexer {
 	
 	public function get_packages() {
 		$this->packages_file = file_get_contents($this->repo_url);
-		return parse_packages($this->packages_file);
+		return $this->parse_packages($this->packages_file);
 	}
 }
 
