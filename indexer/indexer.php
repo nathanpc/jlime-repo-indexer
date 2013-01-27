@@ -14,7 +14,6 @@ class Indexer {
 
 	public static function build_repo_url($repository, $category) {
 		$repo_base_url = "http://www.jlime.com/downloads/repository";
-		// TODO: Implement feed-lagacy too.
 		return "$repo_base_url/$repository/feed/$category/Packages";
 	}
 

@@ -1,13 +1,14 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>JLime Repository Indexer</title>
+		<title>Jlime Repository Indexer</title>
 	</head>
 	<body>
 		<?php
 
 		require_once "./indexer.php";
 		require_once "../db_settings.php";
+		require_once "./pass.php";
 		
 		class Index {
 			private $db;
@@ -54,21 +55,25 @@
 
 		<?php
 		
-		$index = new Index();
-		$index->get_repos();
-		
-		// Clean the table for population.
-		$index->clean_repos_table();
-
-		for ($i = 0; $i < count($index->repos); $i++) {
-			$repo = $index->repos[$i];
-
-			for ($j = 0; $j < count($repo["categories"]); $j++) {
-				$indexer = new Indexer($repo["name"], $repo["categories"][$j]);
-
-				$packages = $indexer->get_packages();
-				$index->update_repo($repo["name"], $repo["categories"][$j], $packages);
+		if (!empty($_GET["pass"]) && htmlentities($_GET["pass"]) == INDEX_PASSWORD) {
+			$index = new Index();
+			$index->get_repos();
+			
+			// Clean the table for population.
+			$index->clean_repos_table();
+	
+			for ($i = 0; $i < count($index->repos); $i++) {
+				$repo = $index->repos[$i];
+	
+				for ($j = 0; $j < count($repo["categories"]); $j++) {
+					$indexer = new Indexer($repo["name"], $repo["categories"][$j]);
+	
+					$packages = $indexer->get_packages();
+					$index->update_repo($repo["name"], $repo["categories"][$j], $packages);
+				}
 			}
+		} else {
+			echo "<h1>The password you entered is incorrect.</h1>";
 		}
 
 		?>

@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>JLime Repositories</title>
+		<title>Jlime Repositories</title>
 		
 		<!-- jQuery (TODO: Use the cloud link instead of the local one) -->
 		<script src="libs/jquery.js" type="text/javascript"></script>
