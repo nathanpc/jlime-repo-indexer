@@ -8,7 +8,7 @@ class Indexer {
 	
 	public function __construct($repository, $category) {
 		$this->repository = $repository;
-		$this->category = category;
+		$this->category = $category;
 		$this->repo_url = build_repo_url($repo, $cat);
 	}
 
