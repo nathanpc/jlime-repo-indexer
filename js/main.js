@@ -1,8 +1,6 @@
 // main.js
 // Do *ALL* the things!!!!
 
-// TODO: Fix the maintainer field display (<> from email is getting parsed)
-
 function show_details(pack) {
 	// Clear modal body.
 	$("#details > .modal-body").html("");
@@ -25,6 +23,8 @@ function show_details(pack) {
 			html += build_list(pack[key], " ", true);
 		} else if (key === "Homepage") {
 			html += "<a href=\"" + pack[key] + "\">" + pack[key] + "</a><br />";
+		} else if (key === "Maintainer") {
+			html += safe_tags(pack[key]) + "<br />";
 		} else {
 			html += pack[key] + "<br />";
 		}
@@ -51,4 +51,8 @@ function build_list(str, splt, link) {
 	html += "</ul>";
 	
 	return html;
+}
+
+function safe_tags(str) {
+	return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
