@@ -28,7 +28,14 @@
 		</div>
 		
 		<div class="container content">
-			<ul>
+			<table class="table table-condensed table-hover">
+				<thead>
+					<tr>
+						<th>Repository</th>
+					</tr>
+				</thead>
+				
+				<tbody>
 				<?php
 				
 				require_once "./db_settings.php";
@@ -44,11 +51,12 @@
 				
 				while ($repo = $query->fetch(PDO::FETCH_ASSOC)) {
 					$name = $repo["name"];
-					echo "<li><a href=\"list.php?type=categories&repo=$name\">" . ucfirst($name) . "</a></li>";
+					echo "<tr onclick=\"window.location = list.php?type=categories&repo=$name;\"><td><a href=\"#\">" . ucfirst($name) . "</a></td></tr>";
 				}
 				
 				?>
-			</ul>
+				</tbody>
+			</table>
 		</div>
 	</body>
 </html>
