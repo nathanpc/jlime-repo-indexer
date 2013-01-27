@@ -14,7 +14,13 @@ class Indexer {
 
 	public static function build_repo_url($repository, $category) {
 		$repo_base_url = "http://www.jlime.com/downloads/repository";
-		return "$repo_base_url/$repository/feed/$category/Packages";
+		$repo_url = "$repo_base_url/$repository";
+		
+		if (!empty($category)) {
+			$repo_url .= "/feed/$category/Packages";
+		}
+		
+		return "$repo_url";
 	}
 
 	private function parse_packages($file) {

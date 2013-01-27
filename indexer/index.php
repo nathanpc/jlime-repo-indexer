@@ -27,10 +27,16 @@
 				$query->execute();
 
 				while ($repo = $query->fetch(PDO::FETCH_ASSOC)) {
+					$categories = "";
+
+					if (!empty($repo["categories"])) {
+						$categories = explode("|", $repo["categories"]);
+					}
+
 					// Populate $repos.
 					array_push($this->repos, array(
 						"name" => $repo["name"],
-						"categories" => explode("|", $repo["categories"])
+						"categories" => $categories
 					));
 				}
 			}
