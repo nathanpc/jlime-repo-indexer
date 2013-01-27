@@ -11,12 +11,22 @@ function show_details(pack) {
 
 	// Set title.
 	$("#details > .modal-header > h3").html(pack.Package);
+	$("#details > .modal-header > h4").html(pack.Version);
 
 	// Set body.
 	for (var key in pack) {
 		var html = "<b>" + key + ":</b> ";
-		if (key === "Depends" || key === "Provides" || key === "Source") {
-			html += build_list(pack[key]);
+		
+		if (key === "Package" || key === "Version") {
+			html = "";
+		} else if (key === "Description") {
+			html = "<p>" + pack[key] + "</p>";
+		} else if (key === "Depends" || key === "Provides") {
+			html += build_list(pack[key], ", ");
+		} else if (key === "Source") {
+			html += build_list(pack[key], " ", true);
+		} else if (key === "Homepage") {
+			html += "<a href=\"" + pack[key] + "\">" + pack[key] + "</a><br />";
 		} else {
 			html += pack[key] + "<br />";
 		}
@@ -28,13 +38,17 @@ function show_details(pack) {
 	$("#details").modal("show");
 }
 
-function build_list(str) {
+function build_list(str, splt, link) {
 	var html = "";
-	var arr = str.split(", ");
+	var arr = str.split(splt);
 	
 	html += "<ul>";
 	for (var i = 0; i < arr.length; i++) {
-		html += "<li>" + arr[i] + "</li>";
+		if (!link) {
+			html += "<li>" + arr[i] + "</li>";
+		} else {
+			html += "<li><a href=\"" + arr[i] + "\">" + arr[i] + "</a></li>";
+		}
 	}
 	html += "</ul>";
 	

@@ -74,7 +74,7 @@
 						
 						for ($i = 0; $i < count($categories); $i++) {
 							$curr_category = $categories[$i];
-							echo "<tr onclick=\"window.location = 'list.php?type=packages&repo=$name&cat=$curr_category'\">\n<td><a href=\"#\">$curr_category</a></td>\n</tr>\n\n";
+							echo "<tr onclick=\"window.location = 'list.php?type=packages&repo=$name&cat=$curr_category'\">\n<td>$curr_category</td>\n</tr>\n\n";
 						}
 					} else if ($req_type == "packages") {
 						// Query the packages for the categories on the repo.
@@ -90,7 +90,7 @@
 							$name = $package->Package;
 							$version = $package->Version;
 
-							echo "<tr onclick='show_details($raw_json);'>\n<td><a href=\"#\">$name</a></td>\n<td>$version</td>\n</tr>";
+							echo "<tr onclick='show_details($raw_json);'>\n<td>$name</td>\n<td>$version</td>\n</tr>";
 						}
 					}
 					
@@ -103,6 +103,7 @@
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				<h3></h3>
+				<h4></h4>
 			</div>
 
 			<div class="modal-body">

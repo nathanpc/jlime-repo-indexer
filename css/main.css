@@ -13,3 +13,13 @@
 .content > table > thead {
 	background-color: rgb(246, 255, 231);
 }
+
+.modal > .modal-header > h4 {
+	color: rgb(110, 110, 110);
+	margin: 0;
+}
+
+td:first-child {
+	color: #0088cc;
+	text-decoration: none;
+}
