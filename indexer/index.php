@@ -33,6 +33,21 @@
 					));
 				}
 			}
+			
+			public function clean_repos_table() {
+				$this->db->query("TRUNCATE TABLE packages");
+			}
+			
+			public function update_repo($repo, $category, $packages) {
+				for ($i = 0; $i < count($packages); $i++) {
+					$insert_query = $this->db->prepare("INSERT INTO packages (repo, category, json) VALUES (:repo, :category, :json)");
+					$insert_query->execute(array(
+						":repo" => $repo,
+						":category" => $category,
+						":json" => json_encode($packages[$i])
+					));
+				}
+			}
 		}
 		
 		?>
@@ -42,8 +57,20 @@
 		$index = new Index();
 		$index->get_repos();
 		
-		print_r($index->repos);
-		
+		// Clean the table for population.
+		$index->clean_repos_table();
+
+		for ($i = 0; $i < count($index->repos); $i++) {
+			$repo = $index->repos[$i];
+
+			for ($j = 0; $j < count($repo["categories"]); $j++) {
+				$indexer = new Indexer($repo["name"], $repo["categories"][$j]);
+
+				$packages = $indexer->get_packages();
+				$index->update_repo($repo["name"], $repo["categories"][$j], $packages);
+			}
+		}
+
 		?>
 	</body>
 </html>
