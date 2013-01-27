@@ -27,9 +27,9 @@
 				$query->execute();
 
 				while ($repo = $query->fetch(PDO::FETCH_ASSOC)) {
-					$categories = "";
+					$categories = $repo["categories"];
 
-					if (!empty($repo["categories"])) {
+					if (!empty($categories)) {
 						$categories = explode("|", $repo["categories"]);
 					}
 

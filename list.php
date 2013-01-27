@@ -70,11 +70,15 @@
 						
 						$repo = $query->fetch(PDO::FETCH_ASSOC);
 						$name = $repo["name"];
-						$categories = explode("|", $repo["categories"]);
 						
-						for ($i = 0; $i < count($categories); $i++) {
-							$curr_category = $categories[$i];
-							echo "<tr onclick=\"window.location = 'list.php?type=packages&repo=$name&cat=$curr_category'\">\n<td>$curr_category</td>\n</tr>\n\n";
+						$categories = $repo["categories"];
+						if (!empty($category)) {
+							$categories = explode("|", $categories);
+
+							for ($i = 0; $i < count($categories); $i++) {
+								$curr_category = $categories[$i];
+								echo "<tr onclick=\"window.location = 'list.php?type=packages&repo=$name&cat=$curr_category'\">\n<td>$curr_category</td>\n</tr>\n\n";
+							}
 						}
 					} else if ($req_type == "packages") {
 						// Query the packages for the categories on the repo.
