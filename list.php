@@ -121,7 +121,7 @@
 			</div>
 
 			<div class="modal-body">
-				
+				<p id="description"></p>
 			</div>
 
 			<div class="modal-footer">

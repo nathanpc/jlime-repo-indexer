@@ -16,7 +16,8 @@ function show_details(pack) {
 		if (key === "Package" || key === "Version") {
 			html = "";
 		} else if (key === "Description") {
-			html = "<p>" + pack[key] + "</p>";
+			html = "";
+			$("#details > .modal-body > #description").html(pack[key]);
 		} else if (key === "Depends" || key === "Provides") {
 			html += build_list(pack[key], ", ");
 		} else if (key === "Source") {
