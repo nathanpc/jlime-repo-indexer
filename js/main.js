@@ -3,7 +3,7 @@
 
 function show_details(pack) {
 	// Clear modal body.
-	$("#details > .modal-body").html("");
+	$("#details > .modal-body").html("<p id=\"description\"></p>");
 
 	// Set title.
 	$("#details > .modal-header > h3").html(pack.Package);
