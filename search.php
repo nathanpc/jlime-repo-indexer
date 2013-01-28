@@ -91,7 +91,7 @@
 					$query = $db->prepare("SELECT * FROM packages WHERE json LIKE :term AND repo = :repo");
 					$query->execute(array(
 						":repo" => $req_repo,
-						":term" => "'%" . $search_term . "%'"
+						":term" => "%" . $search_term . "%"
 					));
 					
 					while ($raw_package = $query->fetch(PDO::FETCH_ASSOC)) {
