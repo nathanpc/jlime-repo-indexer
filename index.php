@@ -51,7 +51,12 @@
 				
 				while ($repo = $query->fetch(PDO::FETCH_ASSOC)) {
 					$name = $repo["name"];
-					echo "<tr onclick=\"window.location = 'list.php?type=categories&repo=$name';\"><td><a href=\"#\">" . ucfirst($name) . "</a></td></tr>";
+					
+					if ($name != "shrek") {
+						echo "<tr onclick=\"window.location = 'list.php?type=categories&repo=$name';\"><td><a href=\"#\">" . ucfirst($name) . "</a></td></tr>";
+					} else {
+						echo "<tr onclick=\"window.location = 'list.php?type=packages&repo=$name';\"><td><a href=\"#\">" . ucfirst($name) . "</a></td></tr>";
+					}
 				}
 				
 				?>

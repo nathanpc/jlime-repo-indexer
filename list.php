@@ -20,6 +20,8 @@
 		// Request variables.
 		$req_type = htmlentities($_GET["type"]);
 		$req_repo = htmlentities($_GET["repo"]);
+		$req_cat = "";
+
 		if (!empty($_GET["cat"])) {
 			$req_cat = htmlentities($_GET["cat"]);
 		}
