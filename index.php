@@ -47,7 +47,7 @@
 					</ul>
 					
 					<form class="navbar-search pull-left">
-						<input id="search" type="text" class="search-query" placeholder="Search">
+						<input id="search" type="text" class="search-query" placeholder="Search" onkeypress="search_keypress(event);">
 					</form>
 					
 					<div class="btn-group" id="search-dropdown">

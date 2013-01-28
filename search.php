@@ -51,7 +51,7 @@
 					</ul>
 
 					<form class="navbar-search pull-left">
-						<input id="search" type="text" class="search-query" placeholder="Search">
+						<input id="search" type="text" class="search-query" placeholder="Search" onkeypress="search_keypress(event);" value=<?php echo "\"" . $_GET["term"] . "\""; ?>>
 					</form>
 
 					<div class="btn-group" id="search-dropdown">

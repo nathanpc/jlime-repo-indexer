@@ -3,7 +3,17 @@
 
 function search_package(repo) {
 	window.location = "search.php?repo=" + repo + "&term=" + encodeURIComponent($("#search").val());
-	//console.log("search.php?repo=" + repo + "&term=" + encodeURIComponent($("#search").val()));
+}
+
+function search_keypress(evt) {
+	if (typeof evt === undefined && window.event) {
+		evt = window.event;
+	}
+
+	if (evt.keyCode == 13) {
+		alert("Select a repository first.");
+		evt.preventDefault();
+	}
 }
 
 function show_details(pack) {
