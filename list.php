@@ -94,6 +94,7 @@
 							$name = $package->Package;
 							$version = $package->Version;
 
+							$raw_json = str_replace("'", "\\\"", $raw_json);
 							echo "<tr onclick='show_details($raw_json);'>\n<td>$name</td>\n<td>$version</td>\n</tr>";
 						}
 					}

@@ -39,7 +39,12 @@ class Indexer {
 	
 			for ($j = 0; $j < count($curr_package); $j++) {
 				$desc_arr = explode(": ", $curr_package[$j], 2);
-				$package_arr[$i][$desc_arr[0]] = $desc_arr[1];
+				
+				if (strlen($desc_arr[1]) < 2000) {
+					$package_arr[$i][$desc_arr[0]] = $desc_arr[1];
+				} else {
+					$package_arr[$i][$desc_arr[0]] = substr($desc_arr[1], 0, 1996) . "...";
+				}
 			}
 		}
 		

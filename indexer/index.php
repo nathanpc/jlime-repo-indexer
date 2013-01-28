@@ -73,7 +73,7 @@
 			for ($i = 0; $i < count($index->repos); $i++) {
 				$repo = $index->repos[$i];
 				echo "<p>Fetching repo: " . $repo["name"] . "</p>";
-	
+
 				for ($j = 0; $j < count($repo["categories"]); $j++) {
 					$indexer = new Indexer($repo["name"], $repo["categories"][$j]);
 	

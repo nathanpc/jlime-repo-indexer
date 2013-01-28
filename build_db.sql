@@ -26,7 +26,7 @@ CREATE TABLE `packages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `repo` varchar(50) DEFAULT NULL,
   `category` varchar(70) DEFAULT NULL,
-  `json` varchar(3000) DEFAULT NULL,
+  `json` varchar(7000) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
