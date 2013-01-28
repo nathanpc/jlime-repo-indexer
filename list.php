@@ -117,7 +117,7 @@
 
 			<div class="modal-footer">
 				<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-				<a href="#" class="btn btn-primary">Save changes</a>
+				<!--<a href="#" class="btn btn-primary">Download</a>-->
 			</div>
 		</div>
 	</body>
