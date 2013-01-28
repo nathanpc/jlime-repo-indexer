@@ -84,11 +84,18 @@
 						}
 					} else if ($req_type == "packages") {
 						// Query the packages for the categories on the repo.
-						$query = $db->prepare("SELECT * FROM packages WHERE repo = :repo AND category = :category");
-						$query->execute(array(
-							":repo" => $req_repo,
-							":category" => $req_cat
-						));
+						if (!empty($category)) {
+							$query = $db->prepare("SELECT * FROM packages WHERE repo = :repo AND category = :category");
+							$query->execute(array(
+								":repo" => $req_repo,
+								":category" => $req_cat
+							));
+						} else {
+							$query = $db->prepare("SELECT * FROM packages WHERE repo = :repo");
+							$query->execute(array(
+								":repo" => $req_repo
+							));
+						}
 					
 						while ($raw_package = $query->fetch(PDO::FETCH_ASSOC)) {
 							$raw_json = $raw_package["json"];
