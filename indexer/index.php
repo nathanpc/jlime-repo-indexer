@@ -64,18 +64,22 @@
 		if (!empty($_GET["pass"]) && htmlentities($_GET["pass"]) == INDEX_PASSWORD) {
 			$index = new Index();
 			$index->get_repos();
+			echo "<p>Got the repos</p>";
 			
 			// Clean the table for population.
 			$index->clean_repos_table();
-	
+			echo "<p>Cleaned the tables</p>";
+
 			for ($i = 0; $i < count($index->repos); $i++) {
 				$repo = $index->repos[$i];
+				echo "<p>Fetching repo: " . $repo["name"] . "</p>";
 	
 				for ($j = 0; $j < count($repo["categories"]); $j++) {
 					$indexer = new Indexer($repo["name"], $repo["categories"][$j]);
 	
 					$packages = $indexer->get_packages();
 					$index->update_repo($repo["name"], $repo["categories"][$j], $packages);
+					echo "<p>Indexed " . $repo["name"] . "->" . $repo["categories"][$j] . "</p>";
 				}
 			}
 		} else {
