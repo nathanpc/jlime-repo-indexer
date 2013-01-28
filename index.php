@@ -17,7 +17,7 @@
 		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
 				<div class="container">
-					<a class="brand" href="#">JLime Repositories</a>
+					<a class="brand" href="/">Jlime Repositories</a>
 					
 					<ul class="nav">
 						<li class="active"><a href="#">Home</a></li>

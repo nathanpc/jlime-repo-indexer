@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>JLime Repositories</title>
+		<title>Jlime Repositories</title>
 
 		<!-- jQuery (TODO: Use the cloud link instead of the local one) -->
 		<script src="libs/jquery.js" type="text/javascript"></script>
@@ -29,7 +29,7 @@
 		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
 				<div class="container">
-					<a class="brand" href="#">JLime Repositories</a>
+					<a class="brand" href="/">Jlime Repositories</a>
 
 					<ul class="nav">
 						<li class="active"><a href="#">Home</a></li>
