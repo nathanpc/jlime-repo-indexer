@@ -82,6 +82,12 @@
 						$index->update_repo($repo["name"], $repo["categories"][$j], $packages);
 						echo "<p>Indexed " . $repo["name"] . "->" . $repo["categories"][$j] . "</p>";
 					}
+				} else {
+					$indexer = new Indexer($repo["name"], $repo["categories"]);
+					
+					$packages = $indexer->get_packages();
+					$index->update_repo($repo["name"], $repo["categories"], $packages);
+					echo "<p>Indexed " . $repo["name"] . "->" . $repo["categories"][$j] . "</p>";
 				}
 			}
 		} else {
