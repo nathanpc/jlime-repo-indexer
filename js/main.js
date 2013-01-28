@@ -1,6 +1,11 @@
 // main.js
 // Do *ALL* the things!!!!
 
+function search_package(repo) {
+	window.location = "search.php?repo=" + repo + "&term=" + encodeURIComponent($("#search").val());
+	//console.log("search.php?repo=" + repo + "&term=" + encodeURIComponent($("#search").val()));
+}
+
 function show_details(pack) {
 	// Clear modal body.
 	$("#details > .modal-body").html("<p id=\"description\"></p>");

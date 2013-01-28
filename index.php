@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -12,9 +13,30 @@
 		<script src="libs/bootstrap/js/bootstrap.js" type="text/javascript"></script>
 		
 		<link href="css/main.css" rel="stylesheet" type="text/css">
+		<script src="js/main.js" type="text/javascript"></script>
 	</head>
 	<body>
-		<div class="navbar navbar-fixed-top">
+		<?php
+		
+		require_once "./db_settings.php";
+		
+		$repos = array();
+		
+		// PDO Stuff.
+		$pdo_string = "mysql:host=" . HOSTNAME . ";dbname=" . DB;
+		$db = new PDO($pdo_string, USERNAME, PASSWORD);
+		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		
+		// Query the repos.
+		$query = $db->prepare("SELECT * FROM repos");
+		$query->execute();
+		
+		while ($repo = $query->fetch(PDO::FETCH_ASSOC)) {
+			array_push($repos, $repo);
+		}
+		
+		?>
+		<div class="navbar navbar-inverse navbar-fixed-top">
 			<div class="navbar-inner">
 				<div class="container">
 					<a class="brand" href="/">Jlime Repositories</a>
@@ -23,6 +45,28 @@
 						<li class="active"><a href="#">Home</a></li>
 						<li class="divider-vertical"></li>
 					</ul>
+					
+					<form class="navbar-search pull-left">
+						<input id="search" type="text" class="search-query" placeholder="Search">
+					</form>
+					
+					<div class="btn-group" id="search-dropdown">
+						<a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">
+							Repositories
+							<span class="caret"></span>
+						</a>
+
+						<ul class="dropdown-menu">
+							<?php
+							
+							foreach ($repos as $repo) {
+								$name = $repo["name"];
+								echo "<li><a href=\"#\" onclick=\"search_package('$name');\">" . ucfirst($name) . "</a></li>\n";
+							}
+							
+							?>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -37,19 +81,8 @@
 				
 				<tbody>
 				<?php
-				
-				require_once "./db_settings.php";
-				
-				// PDO Stuff.
-				$pdo_string = "mysql:host=" . HOSTNAME . ";dbname=" . DB;
-				$db = new PDO($pdo_string, USERNAME, PASSWORD);
-				$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-				
-				// Query the repos.
-				$query = $db->prepare("SELECT * FROM repos");
-				$query->execute();
-				
-				while ($repo = $query->fetch(PDO::FETCH_ASSOC)) {
+
+				foreach ($repos as $repo) {
 					$name = $repo["name"];
 					
 					if ($name != "shrek") {
