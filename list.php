@@ -72,7 +72,7 @@
 						$name = $repo["name"];
 						
 						$categories = $repo["categories"];
-						if (!empty($category)) {
+						if (!empty($categories)) {
 							$categories = explode("|", $categories);
 
 							for ($i = 0; $i < count($categories); $i++) {
