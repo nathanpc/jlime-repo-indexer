@@ -51,7 +51,7 @@
 				
 				while ($repo = $query->fetch(PDO::FETCH_ASSOC)) {
 					$name = $repo["name"];
-					echo "<tr onclick=\"window.location = list.php?type=categories&repo=$name;\"><td><a href=\"#\">" . ucfirst($name) . "</a></td></tr>";
+					echo "<tr onclick=\"window.location = 'list.php?type=categories&repo=$name';\"><td><a href=\"#\">" . ucfirst($name) . "</a></td></tr>";
 				}
 				
 				?>
