@@ -17,7 +17,13 @@ class Indexer {
 		$repo_url = "$repo_base_url/$repository";
 		
 		if (!empty($category)) {
-			$repo_url .= "/feed/$category/Packages";
+			if ($repository == "mongo") {
+				$repo_url .= "/feed/$category/Packages";
+			} else {
+				$repo_url .= "/$category/Packages";
+			}
+		} else {
+			$repo_url .= "/Packages";
 		}
 		
 		return "$repo_url";

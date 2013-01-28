@@ -74,12 +74,14 @@
 				$repo = $index->repos[$i];
 				echo "<p>Fetching repo: " . $repo["name"] . "</p>";
 
-				for ($j = 0; $j < count($repo["categories"]); $j++) {
-					$indexer = new Indexer($repo["name"], $repo["categories"][$j]);
-	
-					$packages = $indexer->get_packages();
-					$index->update_repo($repo["name"], $repo["categories"][$j], $packages);
-					echo "<p>Indexed " . $repo["name"] . "->" . $repo["categories"][$j] . "</p>";
+				if (!empty($repo["categories"])) {
+					for ($j = 0; $j < count($repo["categories"]); $j++) {
+						$indexer = new Indexer($repo["name"], $repo["categories"][$j]);
+		
+						$packages = $indexer->get_packages();
+						$index->update_repo($repo["name"], $repo["categories"][$j], $packages);
+						echo "<p>Indexed " . $repo["name"] . "->" . $repo["categories"][$j] . "</p>";
+					}
 				}
 			}
 		} else {
